@@ -1,0 +1,33 @@
+#
+# Makefile for 32-bit Borland C++ Compiler
+#
+# Usage: make -f Makefile.bcc
+
+#DEFS = -DWINVER=0x400 -D_WIN32_WINNT=0x400 -D_WIN32_IE=0x000 -DJAPAN
+#DEFS = -DWINVER=0x400 -D_WIN32_WINNT=0x400 -D_WIN32_IE=0x300 -DJAPAN
+DEFS = -DWINVER=0x400 -D_WIN32_WINNT=0x400 -D_WIN32_IE=0x400 -DJAPAN
+#DEFS = -DWINVER=0x500 -D_WIN32_WINNT=0x500 -D_WIN32_IE=0x500 -DJAPAN
+#DEFS = -DWINVER=0x500 -D_WIN32_WINNT=0x500 -D_WIN32_IE=0x500 -DJAPAN -DMZC_NO_INLINES
+
+#CXX_FLAGS = $(DEFS) -W -WM -D_MT -D_DEBUG -v -y -DMBCS -D_MBCS
+CXX_FLAGS = $(DEFS) -W -WM -D_MT -D_DEBUG -v -y -DUNICODE -D_UNICODE
+
+OBJS = ClipEMF.obj ClipEMFFrameWnd.obj
+
+all: ClipEMF.exe
+
+ClipEMF.exe: $(OBJS) ClipEMF.rc
+	bcc32 $(CXX_FLAGS) -eClipEMF $(OBJS)
+	brc32 ClipEMF
+
+ClipEMF.obj: stdafx.h resource.h ClipEMF.h ClipEMF.cpp
+	bcc32 -c $(CXX_FLAGS) ClipEMF.cpp
+ClipEMFFrameWnd.obj: stdafx.h resource.h ClipEMFFrameWnd.h ClipEMFFrameWnd.cpp
+	bcc32 -c $(CXX_FLAGS) ClipEMFFrameWnd.cpp
+
+cleanall: clean
+
+clean:
+	if exist *.obj del /Q *.obj
+	if exist *.res del /Q *.res
+	if exist *.tds del /Q *.tds

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClipEMF", "ClipEMF.vcxproj", "{C64BC1F5-DB7B-4A24-B013-A15CE72C2FF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug (MBCS)|Win32 = Debug (MBCS)|Win32
+		Debug (Unicode)|Win32 = Debug (Unicode)|Win32
+		Release (MBCS)|Win32 = Release (MBCS)|Win32
+		Release (Unicode)|Win32 = Release (Unicode)|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C64BC1F5-DB7B-4A24-B013-A15CE72C2FF3}.Debug (MBCS)|Win32.ActiveCfg = Debug (MBCS)|Win32
+		{C64BC1F5-DB7B-4A24-B013-A15CE72C2FF3}.Debug (MBCS)|Win32.Build.0 = Debug (MBCS)|Win32
+		{C64BC1F5-DB7B-4A24-B013-A15CE72C2FF3}.Debug (Unicode)|Win32.ActiveCfg = Debug|Win32
+		{C64BC1F5-DB7B-4A24-B013-A15CE72C2FF3}.Debug (Unicode)|Win32.Build.0 = Debug|Win32
+		{C64BC1F5-DB7B-4A24-B013-A15CE72C2FF3}.Release (MBCS)|Win32.ActiveCfg = Release (MBCS)|Win32
+		{C64BC1F5-DB7B-4A24-B013-A15CE72C2FF3}.Release (MBCS)|Win32.Build.0 = Release (MBCS)|Win32
+		{C64BC1F5-DB7B-4A24-B013-A15CE72C2FF3}.Release (Unicode)|Win32.ActiveCfg = Release|Win32
+		{C64BC1F5-DB7B-4A24-B013-A15CE72C2FF3}.Release (Unicode)|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

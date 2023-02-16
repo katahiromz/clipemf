@@ -1,0 +1,9 @@
+#include <mzc/mzc.h>
+#include <mzc/mzcwin.h>
+#include <mzc/mzcwin2.h>
+#include <mzc/mzcext.h>
+#include <mzc/mzcdlgs.h>
+#include <mzc/mzcshl.h>
+#include "ClipEMFFrameWnd.h"
+#include "ClipEMF.h"
+#include "resource.h"

@@ -1,0 +1,78 @@
+#include <mzc/mzcres.h>
+
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+
+MZC_IDR_MAINFRAME ICON "mzc.ico"
+MZC_IDR_MAINFRAME BITMAP "toolbar.bmp"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     0, 6, 0, 0
+PRODUCTVERSION  0, 6, 0, 0
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+{
+	// Japanese
+	BLOCK "StringFileInfo"
+	{
+		BLOCK "041103A4"
+		{
+			VALUE "CompanyName", "片山博文MZ\0"
+			VALUE "FileDescription", "ClipEMF\0"
+			VALUE "FileVersion", "0.6\0"
+			VALUE "LegalCopyright", "Copyright (C) 2011, 片山博文MZ. All rights reserved.\0"
+			VALUE "ProductName", "ClipEMF\0"
+			VALUE "ProductVersion", "0.6\0"
+		}
+	}
+	BLOCK "VarFileInfo"
+	{
+		VALUE "Translation", 0x0411, 0x03A4
+	}
+}
+
+#if defined(__BORLANDC__) || defined(__GNUC__)
+MZC_IDR_MAINFRAME MANIFEST "ClipEMF_exe.manifest"
+#endif
+
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+
+// Japanese
+STRINGTABLE
+{
+	MZC_IDS_APPNAME,        "ClipEMF"
+	MZC_IDS_UNTITLED,       "無題"
+	MZC_IDS_SAVECHANGE,     "変更を保存しますか？"
+	MZC_IDS_CANNOTOPEN,     "ファイルが開けません。"
+	MZC_IDS_CANNOTSAVE,     "ファイルを保存できません。"
+	MZC_IDS_READY,          "準備完了"
+	MZC_IDS_NONE,           "(なし)"
+	MZC_IDS_OUTOFMEMORY,    "メモリが足りません。"
+	MZC_IDS_DONE,           "完了"
+	MZC_IDS_INITFAIL,       "初期化に失敗しました。"
+}
+
+STRINGTABLE
+{
+	MZC_ID_EXIT,                "終了\nこのプログラムを終了します"
+	MZC_ID_SAVE_AS,             "EMFとして保存\n拡張メタファイル(EMF)として画像を保存します"
+	MZC_ID_OPEN_README_TXT,     "ReadMe.txtを読む\nファイル「ReadMe.txt」を開きます"
+}
+
+MZC_IDR_MAINFRAME ACCELERATORS
+{
+	"S", MZC_ID_SAVE_AS, VIRTKEY, CONTROL
+}
+
+MZC_IDR_MAINFRAME MENU
+{
+	POPUP "ファイル(&F)"
+	{
+		MENUITEM "EMFとして保存(&A)...\tCtrl+S", MZC_ID_SAVE_AS
+		MENUITEM SEPARATOR
+		MENUITEM "終了(&X)\tAlt+F4", MZC_ID_EXIT
+	}
+	POPUP "ヘルプ(&H)"
+	{
+		MENUITEM "ReadMe.txtを読む", MZC_ID_OPEN_README_TXT
+	}
+}

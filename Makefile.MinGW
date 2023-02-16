@@ -1,0 +1,65 @@
+#
+# Makefile for 32-bit MinGW
+#
+# Usage: make -f Makefile.MinGW
+#
+# NOTE: MinGW version doesn't support MBCS.
+
+CMD = cmd          # Windows NT4/2000/XP/Vista/7
+#CMD = command.com # Windows 95/98/Me
+
+#DEFS = -DWINVER=0x400 -D_WIN32_WINNT=0x400 -D_WIN32_IE=0x000 -DJAPAN
+#DEFS = -DWINVER=0x400 -D_WIN32_WINNT=0x400 -D_WIN32_IE=0x300 -DJAPAN
+DEFS = -DWINVER=0x400 -D_WIN32_WINNT=0x400 -D_WIN32_IE=0x400 -DJAPAN
+#DEFS = -DWINVER=0x500 -D_WIN32_WINNT=0x500 -D_WIN32_IE=0x500 -DJAPAN
+#DEFS = -DWINVER=0x500 -D_WIN32_WINNT=0x500 -D_WIN32_IE=0x500 -DJAPAN -DMZC_NO_INLINES
+
+OPTS = -finput-charset=CP932 -fexec-charset=CP932
+
+#############################################
+# Debug (MBCS) version
+#############################################
+CXXFLAGS = $(OPTS) $(DEFS) -w -frtti -mthreads -D_MT -D_DEBUG -g -ggdb -DMBCS -D_MBCS
+LIBS = -mwindows -lmzc0mdas -lmzc0mdat -lcomctl32 -lcomdlg32 -lole32 -lshell32 -luuid -lversion -loleaut32 -lwinmm -lmsacm32 -lopengl32 -lglu32 -limm32
+
+#############################################
+# Release (MBCS) version
+#############################################
+#CXXFLAGS = $(OPTS) $(DEFS) -w -frtti -mthreads -D_MT -O2 -DMBCS -D_MBCS
+#LIBS = -mwindows -lmzc0mras -lmzc0mrat -lcomctl32 -lcomdlg32 -lole32 -lshell32 -luuid -lversion -loleaut32 -lwinmm -lmsacm32 -lopengl32 -lglu32 -limm32
+
+#############################################
+# Debug (Unicode) version
+#############################################
+#CXXFLAGS = $(OPTS) $(DEFS) -w -frtti -mthreads -D_MT -D_DEBUG -g -ggdb -DUNICODE -D_UNICODE
+#LIBS = -mwindows -lmzc0mdws -lmzc0mdwt -lcomctl32 -lcomdlg32 -lole32 -lshell32 -luuid -lversion -loleaut32 -lwinmm -lmsacm32 -lopengl32 -lglu32 -limm32
+
+#############################################
+# Release (Unicode) version
+#############################################
+#CXXFLAGS = $(OPTS) $(DEFS) -w -frtti -mthreads -D_MT -O2 -DUNICODE -D_UNICODE
+#LIBS = -mwindows -lmzc0mrws -lmzc0mrwt -lcomctl32 -lcomdlg32 -lole32 -lshell32 -luuid -lversion -loleaut32 -lwinmm -lmsacm32 -lopengl32 -lglu32 -limm32
+
+CPP  = g++.exe
+WINDRES = windres.exe
+RES  = ClipEMF.res
+OBJ  = ClipEMF.o ClipEMFFrameWnd.o $(RES)
+LINKOBJ  = ClipEMF.o ClipEMFFrameWnd.o $(RES)
+BIN  = ClipEMF.exe
+
+all: ClipEMF.exe
+
+clean:
+	$(CMD) /C "if exist *.o del /Q *.o"
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "ClipEMF.exe" $(LIBS)
+
+ClipEMF.o: stdafx.h resource.h ClipEMF.h ClipEMF.cpp
+	$(CPP) -c ClipEMF.cpp -o ClipEMF.o $(CXXFLAGS)
+
+ClipEMFFrameWnd.o: stdafx.h resource.h ClipEMFFrameWnd.h ClipEMFFrameWnd.cpp
+	$(CPP) -c ClipEMFFrameWnd.cpp -o ClipEMFFrameWnd.o $(CXXFLAGS)
+
+ClipEMF.res: ClipEMF.rc ClipEMF.rc
+	$(WINDRES) -i ClipEMF.rc -o ClipEMF.res -O coff
